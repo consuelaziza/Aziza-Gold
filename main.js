@@ -28,7 +28,7 @@ let intervalId = 0;
 let isGameOver = false;
 let fairyY = 30, fairyX = 30
 let foregroundY = canvas.height - fg.height
-let starsX = 0
+let starsX = 500
 let treesX = 200
 let decTrees = 2
 let score = 0;
@@ -51,7 +51,7 @@ function draw(){
     ctx.drawImage(fairy, fairyX, fairyY)
 
     
-    for(let i=0; i<trees.length; i++ ) {
+    for(let i = 0; i < trees.length; i++ ) {
         let gap = 100
         
         ctx.drawImage(tree, trees[i].x, trees[i].y + tree.height + gap)
@@ -73,7 +73,7 @@ function draw(){
 
         
         if(fairyX + fairy.width >= trees[i].x && fairyX <= trees[i].x + 
-            stars.width && (fairyY <= pipes[i].y + stars.height || 
+            stars.width && (fairyY <= stars[i].y + stars.height || 
            + fairy.height >= trees[i].y + stars.height + gap)){
 
          isGameOver = true 
