@@ -7,18 +7,31 @@ Aziza gold is a game where the player dodges the pointy stars and the spiky tree
 
 
 ## MVP
-MVP definition, deliverables.
+game has a fairy that moves horizontally
+the fairy drops gold bags for happy hunters
+stars randomly organize at the top of the screen
+trees randomly organize at the bottom of the screen
+if fiary touches stars or trees it will end the game
+
 
 
 ## Backlog
-Backlog elements.
+add hunters
+add gold bag drops
+add splash screen
+add game over screen
+
 
 
 ## Data structure
-Classes and methods definition. Or functions.
+main.js
+
+buildSplashScreen () {}
+buildGameScreen () {}
+buildGameOverScreen () {}
 
 
-## States y States Transitions
+## States and States Transitions
 Definition of the different states and their transition (transition functions)
 
 - splashScreen
@@ -28,14 +41,32 @@ Definition of the different states and their transition (transition functions)
 
 
 ## Task
-Task definition in order of priority
+main - buildDom
+main - buildSplashScreen
+main - addEventListener
+main - buildGameScreen
+main - buildGameOverScreen
+game - startLoop
+game - buildCanvas
+game - updateCanvas
+game - drawCanvas
+stars - draw
+trees - move
+game - addStars
+game - addGoldbagAndHunters
+trees - draw
+stars - move
+game - checkCollision
+game - GameOver
+game - addEventListener
+
 
 
 ## Additional Links
 
 
 ### Trello
-[Link url](https://trello.com)
+[Link url](https://trello.com/b/GYT9sVcM/aziza-gold-game)
 
 
 ### Slides
