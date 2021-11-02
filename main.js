@@ -2,6 +2,10 @@ let canvas = document.getElementById('myCanvas');
 let ctx = canvas.getContext('2d');
 canvas.style.border = '2px solid black';
 
+let startBtn = document.querySelector('#start')
+let restartBtn = document.querySelector('#restart')
+let startPage = document.querySelector('#startPage')
+
 
 let bg = new Image();
 bg.src = './images/bg.png';
@@ -45,6 +49,11 @@ let trees = [
     {x: treesX + 300, y: -100}
 ]
 
+function showGameOver(){
+    canvas.style.display = 'none';
+    restartBtn.style.display = 'block'
+}
+
 function draw(){
 
     ctx.drawImage(bg, 0, 0)
@@ -52,9 +61,9 @@ function draw(){
 
     
     for(let i = 0; i < trees.length; i++ ) {
-        let gap = 100
+        let gap = 200
         
-        ctx.drawImage(tree, trees[i].x, trees[i].y + tree.height )
+        ctx.drawImage(tree, trees[i].x, trees[i].y + tree.height + gap)
 
         
         trees[i].x = trees[i].x - decTrees
@@ -66,15 +75,15 @@ function draw(){
         }
 
         
-        
-        if (fairyX == trees[i].x + stars.width) {
+        if (fairyX == trees[i].x + tree.width) {
             score++
         }
 
         
-        if(fairyX + fairy.width >= trees[i].x && fairyX <= trees[i].x + 
-            stars.width && (fairyY <= stars[i].y + stars.height || 
-           + fairy.height >= trees[i].y + stars.height + gap)){
+        if(fairyX < trees[i].x + tree.width && 
+           fairyX + fairy.width > trees[i].x &&
+           fairyY < trees[i].y + tree.height &&
+           fairy.height + fairyY > treesY){
 
          isGameOver = true 
             }
@@ -82,15 +91,39 @@ function draw(){
         
     }
 
-    /*for(let i=0; i < stars.length; i++ ) {
+    for(let i=0; i < stars.length; i++ ) {
 
         ctx.drawImage(star, stars[i].x, stars[i].y)
-    }*/
+
+        //ctx.drawImage(tree, trees[i].x, trees[i].y + tree.height + gap)
+
+        stars[i].x = stars[i].x - decTrees
+
+        
+        if(stars[i].x + star.width < 0 ) {
+            stars[i].x = 500
+            stars[i].y = -Math.floor(Math.random() * star.height)
+        }
+
+        
+        
+        if (fairyX == stars[i].x + stars.width) {
+            score++
+        }
+
+        
+        /*if(fairyX + fairy.width >= trees[i].x && fairyX <= trees[i].x + 
+            stars.width && (fairyY <= stars[i].y + stars.height || 
+           + fairy.height >= trees[i].y + stars.height + gap)){
+
+         isGameOver = true 
+            }*/
+    }
 
     
-    /*if (fairyY + fairy.height > foregroundY) {
+    if (fairyY + fairy.height > canvas.height) {
         isGameOver = true
-    }*/
+    }
 
   
     if (falling) {
@@ -100,7 +133,6 @@ function draw(){
        fairyY = fairyY - 5
     }
     
-    //ctx.drawImage(fg, 0, foregroundY)//
     ctx.font = '24px Helvetica'
     ctx.fillText(`Score: ${score}`, 30, canvas.height - 70 )
 
@@ -116,8 +148,18 @@ function draw(){
     
 }
 
+function handleStart(){
+    startBtn.style.display = 'none'
+    restartBtn.style.display = 'none'
+    canvas.style.display = 'block'
+    
+}
+
 window.addEventListener('load', () => {
     draw()
+    canvas.style.display = 'none';
+    restartBtn.style.display = 'none'; 
+    startPage.style.display = 'none';
 
     document.addEventListener('mousedown', () => {
         falling = false
@@ -126,5 +168,15 @@ window.addEventListener('load', () => {
     document.addEventListener('mouseup', () => {
         falling = true
     })
+
+    startBtn.addEventListener('click', () => {
+        handleStart()
+    })
     
+    restartBtn.addEventListener('click', () => {
+     
+        isGameOver = false;
+        score = 0;
+        handleStart()
+      })
 })
