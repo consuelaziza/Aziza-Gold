@@ -4,6 +4,7 @@ canvas.style.border = "2px solid black";
 let startBtn = document.querySelector("#start");
 let restartBtn = document.querySelector("#restart");
 let startPage = document.querySelector("#startPage");
+
 let bg = new Image();
 bg.src = "./images/bg.png";
 let fg = new Image();
