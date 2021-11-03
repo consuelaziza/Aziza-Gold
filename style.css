@@ -1,6 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 #startPage {
    background-image: url("./images/bg.png");
+   background-repeat: no-repeat;
+   background-size: 500px 280px;
     
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
 }
 
 #instructions {
@@ -21,4 +31,15 @@
 #endOfGame p {
     font-size: 20px;
     padding: 20px 0 20px 0;
+}
+
+.centered-flex {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.small-container {
+    padding: 24px;
+    max-width: 560px;
 }

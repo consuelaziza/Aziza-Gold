@@ -47,7 +47,8 @@ let trees = [
 ];
 
 function showGameOver() {
- 
+  ctx.font = "50px Helvetica";
+  ctx.strokeText("GAME OVER!",250, 50)
   canvas.style.display = "none";
   restartBtn.style.display = "block";
 }
@@ -55,54 +56,69 @@ function showGameOver() {
 function draw() {
   ctx.drawImage(bg, 0, 0);
   ctx.drawImage(fairy, fairyX, fairyY);
+
   let leftFairyBorder = fairyX;
   let rightFairyBorder = fairyX + fairy.width;
   let bottomFairyBorder = fairyY + fairy.height;
+
   for (let i = 0; i < trees.length; i++) {
-    let gap = 200;
+    let gap = 100;
     ctx.drawImage(tree, trees[i].x, trees[i].y + tree.height + gap);
+
     trees[i].x = trees[i].x - decTrees;
+
     if (trees[i].x + tree.width < 0) {
       score++;
       trees[i].x = 500;
       trees[i].y = -Math.floor(Math.random() * tree.height);
     }
+
     let topTreeBorder = trees[i].y + tree.height + gap;
     let leftTreeBorder = trees[i].x;
     let rightTreeBorder = trees[i].x + tree.width;
-    let isInBetweenTreeX =
-      rightFairyBorder >= leftTreeBorder && leftFairyBorder <= rightTreeBorder;
+    let isInBetweenTreeX = rightFairyBorder >= leftTreeBorder && leftFairyBorder <= rightTreeBorder;
     let isInBetweenTreeY = bottomFairyBorder >= topTreeBorder;
+
     if (isInBetweenTreeX && isInBetweenTreeY) {
       isGameOver = true;
     }
+
   }
+
   for (let i = 0; i < stars.length; i++) {
     ctx.drawImage(star, stars[i].x, stars[i].y);
+
     let bottomStarBorder = stars[i].y + star.height;
     let leftStarBorder = stars[i].x;
     let rightStarBorder = stars[i].x + star.width;
     let isInBetweenStarX =
       rightFairyBorder >= leftStarBorder && leftFairyBorder <= rightStarBorder;
-    let isInBetweenStarY = bottomFairyBorder <= bottomStarBorder;
+    let isInBetweenStarY = bottomFairyBorder <= bottomStarBorder;   
+
     if (isInBetweenStarX && isInBetweenStarY) {
       isGameOver = true;
     }
+
     stars[i].x = stars[i].x - decTrees;
+
     if (stars[i].x + star.width < 0) {
       score++;
       stars[i].x = 500;
       stars[i].y = -Math.floor(Math.random() * star.height);
     }
+
   }
+
   if (fairyY + fairy.height > canvas.height) {
     isGameOver = true;
   }
+
   if (falling) {
     fairyY = fairyY + 2;
   } else {
     fairyY = fairyY - 5;
   }
+
   ctx.font = "24px Helvetica";
   ctx.fillText(`Score: ${score}`, 10, 30);
 
@@ -130,15 +146,19 @@ window.addEventListener("load", () => {
   document.addEventListener("mousedown", () => {
     falling = false;
   });
+
   document.addEventListener("mouseup", () => {
     falling = true;
   });
+
   startBtn.addEventListener("click", () => {
     handleStart();
   });
+
   restartBtn.addEventListener("click", () => {
     isGameOver = false;
     score = 0;
     handleStart();
   });
+
 });
