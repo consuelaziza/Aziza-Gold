@@ -47,6 +47,7 @@ let trees = [
 ];
 
 function showGameOver() {
+ 
   canvas.style.display = "none";
   restartBtn.style.display = "block";
 }
@@ -107,6 +108,7 @@ function draw() {
 
   if (isGameOver) {
     cancelAnimationFrame(intervalId);
+    showGameOver() 
   } else {
     intervalId = requestAnimationFrame(draw);
   }
@@ -124,6 +126,7 @@ window.addEventListener("load", () => {
   canvas.style.display = "none";
   restartBtn.style.display = "none";
   startPage.style.display = "static";
+  
   document.addEventListener("mousedown", () => {
     falling = false;
   });
