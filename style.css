@@ -1,0 +1,24 @@
+#startPage {
+   background-image: url("./images/bg.png");
+    
+}
+
+#instructions {
+    position: relative;
+}
+
+#gamePage {
+    position: relative;
+}
+
+#endOfGame {
+    justify-content: center;
+    position: relative;
+}
+
+
+
+#endOfGame p {
+    font-size: 20px;
+    padding: 20px 0 20px 0;
+}
