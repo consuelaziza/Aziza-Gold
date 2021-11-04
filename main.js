@@ -7,6 +7,8 @@ let startPage = document.querySelector("#startPage");
 let endOfGame = document.querySelector("#endOfGame");
 let gamePage = document.querySelector("#gamePage");
 let endScore = document.querySelector("#score");
+let gameAudio = new Audio("./sounds/Celtic Fairy Music - Dance of the Fairies.mp3");
+    gameAudio.volume = 0.2;
 
 
 let bg = new Image();
@@ -52,11 +54,13 @@ let trees = [
 ];
 
 function showGameOver() {
+   
   //ctx.font = "50px Helvetica";
   //ctx.strokeText("GAME OVER!",250, 50)
   canvas.style.display = "none";
   endOfGame.style.display = "block";
   restartBtn.style.display = "block";
+  gameAudio.pause();
 }
 
 function draw() {
@@ -136,11 +140,11 @@ function draw() {
   }
   endScore.innerText = score;
 
-  let gameAudio = new Audio("./sounds/Celtic Fairy Music - Dance of the Fairies.mp3");
-    gameAudio.volume = 0.2;
+  
 }
 
 function handleStart() {
+  gameAudio.play();
   draw();
   //startBtn.style.display = "none";
   startPage.style.display = "none";
