@@ -1,14 +1,13 @@
 # Project's name
-[Link Deploy](http://github.com)
+[Link Deploy](https://consuelaziza.github.io/Aziza-Gold/)
 
 
 ## Description
-Aziza gold is a game where the player dodges the pointy stars and the spiky trees to help the hunters down below that are in the forest. When the hunters need help they recieve a bag of gold dust from Aziza that helps them and you get points. 
+Aziza gold is a game where the player dodges the pointy stars and the spiky trees. As Aziza makes its through the forest you make points. 
 
 
 ## MVP
 game has a fairy that moves horizontally
-the fairy drops gold bags for happy hunters
 stars randomly organize at the top of the screen
 trees randomly organize at the bottom of the screen
 if fiary touches stars or trees it will end the game
@@ -16,8 +15,6 @@ if fiary touches stars or trees it will end the game
 
 
 ## Backlog
-add hunters
-add gold bag drops
 add splash screen
 add game over screen
 
@@ -53,7 +50,6 @@ game - drawCanvas
 stars - draw
 trees - move
 game - addStars
-game - addGoldbagAndHunters
 trees - draw
 stars - move
 game - checkCollision
@@ -70,4 +66,4 @@ game - addEventListener
 
 
 ### Slides
-[Link Slides.com](http://slides.com)
+[Link Slides.com](https://docs.google.com/presentation/d/1PkKCNEtleJ0Cf0c4O94Je4y8DUx_u4_p4XOdyr_rkGU/edit?usp=sharing)
