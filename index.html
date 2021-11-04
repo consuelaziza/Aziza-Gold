@@ -8,40 +8,37 @@
 </head>
 <body>
      <!--Start Page-->
-     <div id ="startPage" class="centered-flex small-container">
+     <section id ="startPage" class="centered-flex">
+     <div class="centered-flex small-container">
         <h1>Aziza Gold</h1>
         <p>Let's fly!</p>
-       <div id="instructions">
+       <div id="instructions" class= "small-container">
         <p>Instructions:</p>
         <p>Help the magical Aziza Queen find her way through spiky 
             trees and stars! </p>
-            <p>Use your mouse our mouse pad. If you use your mouse pad only one finger if you use two 
+            <p>Use your mouse or mouse pad. If you use your mouse pad only one finger if you use two 
                 she will fly away forever.
             </p>
         </div> 
-    </div>
         <button id="start">Start</button>
+    </div>
+</section>
    
      <!--Game Page-->
-     <div id = "gamePage">
+     <section id = "gamePage">
+     <div>
     <canvas id="myCanvas" width="280" height="500"></canvas>
     </div>  
+</section>
     <!--End of Game Page-->
-    <div id = "endOfGame" class="centered-flex small-container">
-   
-   
-
-        
-
-            <p>Your score is <span id="score">:</span></p>
-
-        
-
+<section id = "endOfGame" >
+    <div class="centered-flex small-container">
+        <h1>GAME OVER</h1>
+        <p>Great flying!</p>
+        <p>Your score is <span id="score"></span></p>
        <button id="restart">Restart</button> 
-
-    
-    
     </div>
+</section>
     <!-- js files -->
     <script src="main.js"></script>
 </body>

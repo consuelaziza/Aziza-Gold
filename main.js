@@ -4,6 +4,10 @@ canvas.style.border = "2px solid black";
 let startBtn = document.querySelector("#start");
 let restartBtn = document.querySelector("#restart");
 let startPage = document.querySelector("#startPage");
+let endOfGame = document.querySelector("#endOfGame");
+let gamePage = document.querySelector("#gamePage");
+let endScore = document.querySelector("#score");
+
 
 let bg = new Image();
 bg.src = "./images/bg.png";
@@ -36,6 +40,7 @@ let decTrees = 2;
 let score = 0;
 let falling = true;
 
+
 let stars = [
   { x: starsX, y: 0 },
   { x: starsX + 300, y: -100 }
@@ -47,9 +52,10 @@ let trees = [
 ];
 
 function showGameOver() {
-  ctx.font = "50px Helvetica";
-  ctx.strokeText("GAME OVER!",250, 50)
+  //ctx.font = "50px Helvetica";
+  //ctx.strokeText("GAME OVER!",250, 50)
   canvas.style.display = "none";
+  endOfGame.style.display = "block";
   restartBtn.style.display = "block";
 }
 
@@ -62,15 +68,15 @@ function draw() {
   let bottomFairyBorder = fairyY + fairy.height;
 
   for (let i = 0; i < trees.length; i++) {
-    let gap = 100;
-    ctx.drawImage(tree, trees[i].x, trees[i].y + tree.height + gap);
+    let gap = 150;
+    ctx.drawImage(tree, trees[i].x, trees[i].y + (canvas.height/2) + gap);
 
     trees[i].x = trees[i].x - decTrees;
 
     if (trees[i].x + tree.width < 0) {
       score++;
       trees[i].x = 500;
-      trees[i].y = -Math.floor(Math.random() * tree.height);
+      trees[i].y = -Math.floor(Math.random()  *tree.height/2);
     }
 
     let topTreeBorder = trees[i].y + tree.height + gap;
@@ -104,7 +110,7 @@ function draw() {
     if (stars[i].x + star.width < 0) {
       score++;
       stars[i].x = 500;
-      stars[i].y = -Math.floor(Math.random() * star.height);
+      stars[i].y = -Math.floor(Math.random() * star.height/2);
     }
 
   }
@@ -128,13 +134,18 @@ function draw() {
   } else {
     intervalId = requestAnimationFrame(draw);
   }
+  endScore.innerText = score;
+
+  let gameAudio = new Audio("./sounds/Celtic Fairy Music - Dance of the Fairies.mp3");
+    gameAudio.volume = 0.2;
 }
 
 function handleStart() {
   draw();
-  startBtn.style.display = "none";
+  //startBtn.style.display = "none";
   startPage.style.display = "none";
-  restartBtn.style.display = "none";
+  endOfGame.style.display = "none";
+  //restartBtn.style.display = "none";
   canvas.style.display = "block";
 }
 
@@ -142,6 +153,7 @@ window.addEventListener("load", () => {
   canvas.style.display = "none";
   restartBtn.style.display = "none";
   startPage.style.display = "static";
+  endOfGame.style.display = "none";
   
   document.addEventListener("mousedown", () => {
     falling = false;
@@ -156,6 +168,7 @@ window.addEventListener("load", () => {
   });
 
   restartBtn.addEventListener("click", () => {
+    location = location;
     isGameOver = false;
     score = 0;
     handleStart();
