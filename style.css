@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
+* {
+    border-color: blue;
+}
+
 #startPage {
     justify-content: center;
     background-image: url("./images/bg.png");
@@ -10,8 +14,7 @@
 }
 
 body {
-    display: flex;
-    justify-content: center;
+   
     font-family: 'Roboto', sans-serif;
 }
 
@@ -25,9 +28,6 @@ section {
     min-height: 500px;
 }
 
-#instructions {
-    position: relative;
-}
 
 #gamePage {
     position: relative;
@@ -36,9 +36,10 @@ section {
 
 #endOfGame {
     justify-content: center;
-    margin: auto;
     background-image: url('./images/bg.png');
+    background-repeat: no-repeat;
     background-size: cover;
+    margin: auto;
    
 }
 
